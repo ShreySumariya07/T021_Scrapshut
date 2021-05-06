@@ -15,32 +15,19 @@
 
   <div class="login-page" >
 		<div class="form" >
-			<form class="reg-form" action="RegisterAsUser" method="post">
+			<form class="reg-form" action="{% url 'account:RegisterAsUser' %}" method="post">
 				{% csrf_token %}
-				<input type="text" name="fname" size="40" maxlength="30" pattern="^[a-zA-Z]'?[-'a-zA-Z]+$" placeholder="First Name" required>
-				<input type="text" name="lname" size="40" maxlength="30" pattern="^[a-zA-Z]'?[-'a-zA-Z]+$" placeholder="Last Name" required>
+				<input type="text" name="first_name" size="40" maxlength="30" pattern="^[a-zA-Z]'?[-'a-zA-Z]+$" placeholder="First Name" required>
+				<input type="text" name="last_name" size="40" maxlength="30" pattern="^[a-zA-Z]'?[-'a-zA-Z]+$" placeholder="Last Name" required>
 				<input type="email" name="email" size="50" placeholder="Your contact e-mail" required/>
-				<input type="number" min = "0" name="phone" placeholder="Contact Number" required>
-
-				<input list="region" placeholder ="Region" required>
-					<datalist id="region">
-						<option value="Africa">
-						<option value="Antarctica">
-						<option value="Asia">
-						<option value="Australia">
-     <option value="Europe">
-     <option value="North America">
-     <option value="South America">
-					</datalist>
-				
+				<input type="number" min = "0" name="phone" placeholder="Contact Number" required />
 				<input type="password" name="password1" placeholder="Password" required>
 				<input type="password" name="password2" placeholder="Confirm password" required/>
 				<input type="textarea" name="address" maxlength="300" minlength="1" placeholder="Address" required>
 				<input type="text" name="country" maxlength="50" minlength="1" placeholder="country" required>
 				<input type="number" name="pincode" minlength="1" placeholder="pincode" required>
 				<button type="submit">create</button>
-
-				<p>Already registered? <a href="LoginAsUser" >Login</a></p>
+				<p>Already registered? <a href="{% url 'account:LoginAsUser' %}" >Login</a></p>
 			</form>
 		</div>
   </div>

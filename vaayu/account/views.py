@@ -1,3 +1,4 @@
+
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import auth,User
@@ -12,144 +13,94 @@ def index(request):
 
 def RegisterAsUser(request):
     if request.method == "POST":
-        return redirect('LoginAsUser')
-    else:
-        return render(request,"register-donor.html")
-'''   
-    if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        donar_form = DonarForm(request.POST, instance=request.user.profile)
-        if user_form.is_valid() and donar_form.is_valid():
-            user_form.save()
-            donar_form.save()
-            messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('LoginAsUser')
-        else:
-            messages.error(request, ('Please correct the error below.'))
-            return render('RegisterAsUser')
-    else:
-        user_form = UserForm(instance=request.user)
-        donar_form = DonarForm(instance=request.user.profile)
-    return render(request, 'register-donar.html', {'user_form': user_form,'donar_form': donar_form})
-'''
-"""    if request.method == 'POST':
-        fname = request.POST['fname']
-        lname = request.POST['lname']
-
-        email = request.POST['email']
-        phone = request.POST['phone']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        Address = request.POST['address']
-        country = request.POST['country']
-        pincode = request.POST['pincode']
-
-        if password1 == password2:
-            if user.objects.filter(email=email).exists():
-                messages.info(request, "Enter another email-id !!")
-                return redirect("RegisterAsUser")
+        username = request.POST.get('email')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        country = request.POST.get('country')
+        pincode = request.POST.get('pincode')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+        if pass1 == pass2:
+            if User.objects.filter(username = username).exists():
+                messages.error(request,"username taken")
+                return redirect('register-donor.html')
+            elif User.objects.filter(email=email).exists():
+                messages.error(request,"email already taken")
+                return redirect('register-donor.html')
             else:
-                user_view = user.objects.c(fname=fname, lname=lname, email=email, phone=phone,
-                                                     password=password1, Address=Address, country=country,
-                                                     pincode=pincode)
-                user_view.save()
-                messages.info(request, "user created")
-                return redirect('LoginAsUser')
+                user = User.objects.create_user(username=username,email=email,first_name=first_name,last_name=last_name,phone=phone,isDonar=True,isNGO=False)
+                donor = Donar.objects.create(user_donar=user,Address=address,country=country,pincode=pincode)
+                user.save()
+                donor.save
+                return redirect('account:LoginAsUser')
         else:
-            print("the password and confirm password didn't match !!")
-            return redirect('RegisterAsUser')
+            messages.error(request,"incorrect password")
+            return redirect('register-donor-html')
     else:
-        return render(request, "register-donor.html")
-"""
+        messages.info(request,"invalid error")
+        return render(request,"register-donor.html")
+
 def RegisterAsNgo(request):
     if request.method == 'POST':
-        return redirect('LoginAsNgo')
-    else:
-        return render(request,"register-ngo.html")
-        '''
-        user_form = UserForm(request.POST, instance=request.user)
-        ngo_form = NGOForm(request.POST, instance=request.user.profile)
-        if user_form.is_valid() and ngo_form.is_valid():
-            user_form.save()
-            ngo_form.save()
-            messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('LoginAsNgo')
-        else:
-            messages.error(request, ('Please correct the error below.'))
-            return render('RegisterAsNgo')
-    else:
-        user_form = UserForm(instance=request.user)
-        ngo_form = NGOForm(instance=request.user.profile)
-    return render(request, 'register-ngo.html', {'user_form': user_form,'ngo_form': ngo_form})
-"""
-    if request.method == 'POST':
-        ngo_name = request.POST['first_name']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        ngo_email = request.POST['email']
-        ngo_phone = request.POST['phone']
-        ngo_address = request.POST['address']
-        ngo_country = request.POST['country']
-        ngo_pincode = request.POST['pincode']
-        weblink = request.POST['weblink']
-
-        if password1 == password2:
-            if ngo.objects.filter(ngo_email = ngo_email).exists():
-                messages.info(request, "Enter another email-id !!")
-                return redirect("RegisterAsNgo")
+        username = request.POST.get('email')
+        first_name = request.POST.get('first_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        country = request.POST.get('country')
+        pincode = request.POST.get('pincode')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+        weblink = request.POST.get('weblink')
+        if pass1 == pass2:
+            if User.objects.filter(username=username).exists():
+                messages.error(request, "username taken")
+                return redirect('register-donor.html')
+            elif User.objects.filter(email=email).exists():
+                messages.error(request, "email already taken")
+                return redirect('register-donor.html')
             else:
-                ngo_view = ngo.objects.create_user(ngo_name=ngo_name,ngo_email=ngo_email,ngo_phone=ngo_phone,ngo_pass=password1, ngo_address= ngo_address, ngo_country=ngo_country,ngo_pincode=ngo_pincode,weblink = weblink)
-                ngo_view.save()
-                messages.info(request, "ngo account created")
-                return redirect('LoginAsNgo')
+                user = User.objects.create_user(username=username, email=email, first_name=first_name, phone=phone, isDonar=True, isNGO=False)
+                ngo = NGO.objects.create(user_ngo=user, ngo_Address=address, country=country, pincode=pincode,weblink=weblink)
+                user.save()
+                ngo.save
+                return redirect('account:LoginAsNgo')
         else:
-            print("the password and confirm password didn't match !!")
-            return redirect('RegisterAsNgo')
-
-    # return redirect('/')
+            messages.error(request, "incorrect password")
+            return redirect('register-ngo-html')
     else:
+        messages.info(request, "invalid error")
         return render(request, "register-ngo.html")
-    '''
+
 
 def LoginAsUser(request):
     if request.method == 'POST':
-        return redirect('RegisterAsUserSuccess')
+        username = request.POST.get("email")
+        password = request.POST.get("password")
+        user = auth.authenticate(username=username,password=password)
+        if user is  None:
+            return render(request,"userdonation.html")
+        else:
+            messages.error(request,"invalid username or password")
+            return render(request,"login.html")
     else:
         return render(request, "login.html")
-        '''
-        email = request.POST['email']
-        password = request.POST['password']
-
-        user = auth.authenticate(email=email, password=password)
-
-        if user is not None:
-            auth.login(request,user)
-            return redirect('UserDonation')
-        else:
-            messages.info(request,"Invalid credentials")
-            return redirect('LoginAsUser')
-            '''
-
 
 def LoginAsNgo(request):
     if request.method == "POST":
-        return redirect('NgoHomepage')
+        username = request.POST.get("email")
+        password = request.POST.get("password")
+        user = auth.authenticate(username=username,password=password)
+        if user is None:
+            return render(request,"homepagelogin.html")
+        else:
+            messages.error(request,"invalid username or password")
+            return render(request,"login-ngo.html")
     else:
         return render(request, "login-ngo.html")
-        ''' 
-        ngo_email = request.POST['ngo_email']
-        ngo_pass = request.POST['ngo_pass']
-
-        ngo = auth.authenticate(ngo_email=ngo_email, ngo_pass=ngo_pass)
-
-        if ngo is not None:
-            auth.login(request,ngo)
-            return redirect('NgoRequirement')
-        else:
-            messages.info(request,"Invalid credentials")
-            return redirect('LoginAsNgo')
-            '''
-
 
 def RegisterAsUserSuccess(request):
     return render(request,"userdonation.html")

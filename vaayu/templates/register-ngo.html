@@ -14,32 +14,19 @@
 <body>
   <div class="login-page" >
 		<div class="form" >
-			
-      
-			<form class="reg-form" action = "RegisterAsNgo" method="post">
+			<form class="reg-form" action = "{% url 'account:RegisterAsNgo' %}" method="post">
 				{% csrf_token %}
-
-				<input type="text" name="fullName" size="40" maxlength="38" pattern="^[a-zA-Z]'?[-'a-zA-Z]+$" placeholder="Full Name" required>
+				<input type="text" name="first_name" size="40" maxlength="30" pattern="^[a-zA-Z]'?[-'a-zA-Z]+$" placeholder="NGO name" required/>
 				<input type="email" name="email" size="50" maxlength="256" placeholder="Your contact e-mail" required/>
-				<input type="text" name="username"  placeholder="Choose username" required>
-				<input list="region" placeholder ="Region" required>
-					<datalist id="region">
-						<option value="Africa">
-						<option value="Antarctica">
-						<option value="Asia">
-						<option value="Australia">
-     <option value="Europe">
-     <option value="North America">
-     <option value="South America">
-					</datalist>
-				
-				<input type="password" name="password" minlength="6" maxlength="32" placeholder="Password" required>
-				<input type="password" name="password" placeholder="Confirm password" required/>
-				<input type="text" name="Address" maxlength="500" minlength="1" placeholder="Address" required>
-				<input type="option" name="type" maxlength="5" minlength="3" placeholder="Donor/NGO" required>
-
+				<input type="password" name="password1" minlength="6" maxlength="32" placeholder="Password" required>
+				<input type="password" name="password2" placeholder="Confirm password" required/>
+				<input type="number" min = "0" name="phone" placeholder="Contact Number" required />
+				<input type="text" name="address" maxlength="500" minlength="1" placeholder="Address" required/>
+				<input type="text" name="country" maxlength="50" minlength="1" placeholder="country" required>
+				<input type="number" name="pincode" minlength="1" placeholder="pincode" required>
+				<input type="url" name="weblink" placeholder="web link for the ngo" required />
 				<button type="submit">create</button>
-				<p>Already registered? <a href="LoginAsNgo" >Login</a></p>
+				<p>Already registered? <a href="{% url 'account:LoginAsNgo' %}" >Login</a></p>
 			</form>
 		</div>
   </div>

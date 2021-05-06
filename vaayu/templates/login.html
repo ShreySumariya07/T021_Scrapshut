@@ -9,17 +9,17 @@
 <body>
      <div class="login-page">
      	<div class="form">
-     		<form class="login-form" action="LoginAsUser" method="post" >
+     		<form class="login-form" action="{% url 'account:LoginAsUser' %}" method="post" >
 				{% csrf_token %}
-				<input type="email" name="email" size="50" maxlength="256"  placeholder="Enter e-mail" required>
+				<input type="text" name="email"size="50" maxlength="256"  placeholder="Enter e-mail" required>
 				<input type="password" name="password" minlength="6" maxlength="32" placeholder="Password" required/>
-				       <button type="submit">login</button>
+				<button type="submit">login</button>
  
     <label class="container">Remember me
   <input type="checkbox">
   <span class="checkmark"></span>
       </label>  
-				<p>Not registered?  <a href="RegisterAsUser">Create account</a></p>
+				<p>Not registered?  <a href="{% url 'account:RegisterAsUser' %}">Create account</a></p>
 				<p>Forgot Password?  <a href="#" target="_blank">Click here</a></p>
 </form>
      		
