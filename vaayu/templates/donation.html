@@ -8,74 +8,31 @@
 <body>
 	<section id="services" class="services">
 	<div class="container">
+		<button class='btn btn-secondary'>
+			<a href="{% url 'account:index' %}">Logout</a>
+		</button>
 		<h1 class="section-heading"><span>Donation</span></h1>
 		<p>                </p>
-		<div class="container-1">
+		<form method="POST" action="{% url 'account:DonationSuccessful' user_id=user.id ngoid=ngo.id %}">
+			{% csrf_token %}
+			<div class="container-1">
 
-		{% for i in Equipments %}
-			<div class="card-wrapper">
-			<div class="card">
-				<img src="/media/{{i.image}}" width="125px" height="125px"  alt="">
-				<h2>{{i.equi_name}}</h2>
-				<input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
+				{% for i in Equipments %}
+					<div class="card-wrapper">
+						<div class="card">
+							<img src="/media/{{i.image}}" width="125px" height="125px"  alt="">
+							<h2>{{i.equi_name}}</h2>
+							<input type="number" min="0" placeholder="Enter Quantity" name="{{i.id}}" required>
 				<!--<button class="btn btn-secondary">Donate</button>-->
+						</div>
+					</div>
+				{% endfor %}
 			</div>
-		</div>
-		{% endfor %}
-			<!--
-		<div class="card-wrapper">
-			<div class="carc="./Images/Ventilator.jpeg" width="125px" height="125px"  alt="">
-				<h2>Vend">
-				<img srtilators</h2>
-				<input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
-				<button class="btn btn-secondary">Donate</button>
-			</div>
-		</div>
-		<div class="card-wrapper">
-		 <div class="card">
-			 <img src="./Images/masks.jpg" width="125px" height="125px" alt="">
-			 <h2>Masks</h2>
-			 <input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
-			 <!--<button class="btn btn-secondary">Donate</button>
-		 </div>
-		 </div>
-		 <div class="card-wrapper">
-			 <div class="card">
-				 <img src="./Images/bed.jpg" width="125px" height="125px" alt="">
-				 <h2>Bed</h2>
-				 <input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
-				 <!--<button class="btn btn-secondary">Donate</button>
-			 </div>
-		 </div>
-		 <div class="card-wrapper">
-			 <div class="card">
-				 <img src="./Images/oximeter.jpg" width="125px" height="125px" alt="">
-				 <h2>Oximeter</h2>
-				 <input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
-				<!--<button class="btn btn-secondary">Donate</button>
-			 </div>
-		 </div>
-		 <div class="card-wrapper">
-			 <div class="card">
-				 <img src="./Images/Steamer.jpeg" width="125px" height="125px" alt="">
-				 <h2>Steamers</h2>
-				 <input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
-				 <!--<button class="btn btn-secondary">Donate</button>
-			 </div>
-		 </div>
-		 <div class="card-wrapper">
-			 <div class="card">
-				 <img src="./Images/Sanitizer.jpeg" width="125px" height="125px" alt="">
-				 <h2>Sanitizer</h2>
-				 <input type="number" min="0" placeholder="Enter Quantity" name="Quantity" required>
-				 <!--<button class="btn btn-secondary">Donate</button>
-			 </div>
-		 </div>
-		-->
-		 </div>
-		 
+			
+			<button type="submit" class="btn btn-secondary" style="display:flex;justify-content:space-between;margin:1rem auto;">Donate</button>
+		</form>
 	</div>
 </section>
-	<button class="btn btn-secondary"><a href = "RegisterAsUserSuccess">Donate</a></button>
+	
 </body>
 </html>

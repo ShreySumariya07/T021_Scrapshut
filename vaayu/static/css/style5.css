@@ -1,51 +1,47 @@
-.btn{
-	padding: 0.6rem 2rem;
-	font-size: 1rem;
-	font-weight: 600;
-	border:2px solid transparent;
-	outline: none;
-	cursor: pointer;
-	text-transform: uppercase;
-	transition: all .3s ease;
-	float:right;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-
+.btn {
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  float: right;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
-.btn-secondary{
-	background:transparent;
-	color:#3DCFD3;
-	border-color:#3DCFD3;
-	border-radius: 2rem;
-
+.btn-secondary {
+  background: transparent;
+  color: #3dcfd3;
+  border-color: #3dcfd3;
+  border-radius: 2rem;
 }
-.btn-secondary:hover{
-	background:#3DCFD3;
-	color: #070606;
+.btn-secondary:hover {
+  background: #3dcfd3;
+  color: #070606;
 }
-body{
-	padding-left: 3rem;
-	padding-right: 3rem;
-    background-color: #F2F2F2;
+body {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: #f2f2f2;
 }
-h1{
-	color: #070606;
-	text-align: center;
-	font-family: sans-serif;
-	font-size: 3rem;
+h1 {
+  color: #070606;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 3rem;
 }
-ul{
-	padding-top: 1.5rem;
-	background-color: white;
-	padding-bottom: 4rem;
-	border-radius: 2rem;
-	
-
+ul {
+  padding-top: 1.5rem;
+  background-color: white;
+  padding-bottom: 4rem;
+  border-radius: 2rem;
 }
-ul:hover{
-	background-color: #070606;
-	color: white;
+ul:hover {
+  background-color: #070606;
+  color: white;
 }
-h2{
-	color: #3DCFD3;
+h2 {
+  color: #3dcfd3;
 }

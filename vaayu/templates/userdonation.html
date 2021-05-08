@@ -5,7 +5,7 @@
 <head>
 	<title>NGO Name</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style5.css' %}">
-	<STYLE>A {text-decoration: none;} </STYLE>
+	<style> a{text-decoration: none;} </style>
 	<!--<style type="text/css">
 		button {
 		text-decoration : none;
@@ -13,26 +13,78 @@
 	</style>-->
 </head>
 <body>
-	<button class="btn btn-secondary"><a href = "index">Logout</a></button>
-	<h1>NGO Requirements</h1>
-	<ul>
-		<h2>Bhumi</h2>
-		<h3>Requirements</h3>
- 		<li>Masks Needed:</li>
- 		<li>Oximeter Needed:</li>
-		<button class="btn btn-secondary"><a href = "DonateUser">Donate</a></button>
-		
+	<button class="btn btn-secondary"><a href = "{% url 'account:index' %}">Logout</a></button>
+	<h1>NGO REQUIREMENTS</h1>
+	<!-- <div class="container">
+		<div class="row" style="margin: auto;">
+			<h2>Ngo Requirements</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card text-center">
+				<h5 class="card-header">Featured</h5>
+				<div class="card-body">
+					<h5 class="card-title">Special title treatment</h5>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				</div>
+				<div>
+				<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					Requirements
+				</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<h5 class="card-header">Featured</h5>
+				<div class="card-body">
+					<h5 class="card-title">Special title treatment</h5>
+					<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	{% for let in l %}
+		{% for key,value in let.items %}
 
-	</ul>
-	<ul>
+			<ul>
+				<h2>{{key.first_name}}</h2>
+				<h3>Requirements</h3>
+				{% for vet in value %}
+					{% for key,value in vet.items %}
+					<li>{{key}} Needed:{{value}}</li>
+					{% endfor %}
+				{% endfor %}
+				<button class="btn btn-secondary"><a href = "{% url 'account:DonateUser' ngo_id=key.id user_id=user.id %}">Donate</a></button>
+			</ul>
+		{% endfor %}
+	{% endfor %}
+	<!-- <ul>
 		<h2>CareClub</h2>
 		<h3>Requirements</h3>
  		<li>Ventilator Needed:</li>
  		<li>Mask Needed:</li>
  		<li>Beds Needed:</li>
 		<button class="btn btn-secondary"><a href = "DonateUser">Donate</a></button>
-		
-
 	</ul>
 	<ul>
 		<h2>Smile Charities</h2>
@@ -41,18 +93,14 @@
  		<li>Oximeter Needed:</li>
  		<li>Sanitizer Needed:</li>
 		<button class="btn btn-secondary"><a href = "DonateUser">Donate</a></button>
-		
-
 	</ul>
 	<ul>
 		<h2>Fortune Found</h2>
 		<h3>Requirements</h3>
  		<li>Masks Needed:</li>
- 		<li>Ventilator Needed:</li>
+ 		<li>Ventilator Needed:</li>5
  		<li>Sanitizer Needed:</li>
 		<button class="btn btn-secondary"><a href = "DonateUser">Donate</a></button>
-		
-
 	</ul>
 	<ul>
 		<h2>Tender Homes</h2>
@@ -61,8 +109,7 @@
  		<li>Ventilator Needed:</li>
  		<li>Sanitizer Needed:</li>
 		<button class="btn btn-secondary"><a href = "DonateUser">Donate</a></button>
-		
-
-	</ul>
+	</ul> -->
 </body>
+
 </html>

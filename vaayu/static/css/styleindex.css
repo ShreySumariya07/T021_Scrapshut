@@ -1,101 +1,144 @@
-@import 'utilities.css';
-:root{
-    --primary:#3DCFD3;
-    --dark:#161616;
-    --pure:#FFFFFF;
-    --ternary:#898989;
-    --light:#F2F2F2;
-    --secondary:#070606;    
+:root {
+  --primary: #3dcfd3;
+  --dark: #161616;
+  --pure: #ffffff;
+  --ternary: #898989;
+  --light: #f2f2f2;
+  --secondary: #070606;
 }
-body{
-    font-family: 'Poppins',sans-serif;
-    overflow-x: hidden;
-    align-items: center;
-    background-color: var(--light);
-    padding-bottom: 5rem;
-	
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  align-items: center;
+  background-color: var(--light);
+  padding-bottom: 5rem;
 }
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
-header{
-    background: var(--dark);
-    clip-path: polygon(0 0,100% 0,100% 100%,70% 87%,0 100%);
+header {
+  background: var(--dark);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 87%, 0 100%);
 }
-.container{
-    max-width: 1152px;
-    padding: 0 15px;
-    margin: 0 auto;
+.container {
+  max-width: 1152px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
-section{
-	padding-bottom: 5rem;
-	background-color: var(--light);
+section {
+  padding-bottom: 5rem;
+  background-color: var(--light);
 }
 
-.section-heading{
-	padding-top: 5rem;
-    color:var(--secondary);
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    line-height: 0.5;
+.section-heading {
+  padding-top: 5rem;
+  color: var(--secondary);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 0.5;
 }
-.section-heading span{
-    color: var(--primary);
+.section-heading span {
+  color: var(--primary);
 }
-.section-heading +p{
-    color: var(--ternary);
-    font-family: 'Lato',sans-serif;
-    margin-bottom: 8rem;
-    text-align: center;
+.section-heading + p {
+  color: var(--ternary);
+  font-family: "Lato", sans-serif;
+  margin-bottom: 8rem;
+  text-align: center;
 }
-section.services{
-    background: var(--light);
+section.services {
+  background: var(--light);
 }
-.container-1{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 2rem;
-    grid-row-gap: 6rem;
+.container-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 6rem;
 }
-section.services .card-wrapper .card{
-    background: var(--pure);
-    padding: 3rem 2rem;
-    position: relative;
-    padding-top: 5rem;
-    text-align: center;
-    transition: all .3s ease;
+section.services .card-wrapper .card {
+  background: var(--pure);
+  padding: 3rem 2rem;
+  position: relative;
+  padding-top: 5rem;
+  text-align: center;
+  transition: all 0.3s ease;
 }
-section.services .card-wrapper .card input{
-	padding: 0.5rem;
-	border-radius: 2rem;
-	text-align: center;
-	margin-bottom: 0.5rem;
-	line-height: 1.6;
-	
+section.services .card-wrapper .card input {
+  padding: 0.5rem;
+  border-radius: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
-section.services .card-wrapper .card img{
-    position: absolute;
-    
-    top: -3.5rem;
-    left:50%;
-    transform: translateX(-50%);
-}
-section.services .card-wrapper .card h2{
-    font-weight: 400;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-section.services .card-wrapper .card:hover{
-    background: var(--dark);
-}
-section.services .card-wrapper .card:hover h2, section.services .card-wrapper .card:hover p{
-     color: var(--pure);
-}
+section.services .card-wrapper .card img {
+  position: absolute;
 
+  top: -3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+section.services .card-wrapper .card h2 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+section.services .card-wrapper .card:hover {
+  background: var(--dark);
+}
+section.services .card-wrapper .card:hover h2,
+section.services .card-wrapper .card:hover p {
+  color: var(--pure);
+}
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.btn {
+  padding: 0.8rem 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--secondary);
+}
+.btn-primary:hover {
+  background: transparent;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+  float: right;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.btn-secondary:hover {
+  background: var(--primary);
+  color: var(--secondary);
+}
+.flex-1 {
+  flex: 1;
+}
+.justify-center {
+  justify-content: center;
+}

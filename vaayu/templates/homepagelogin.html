@@ -27,13 +27,13 @@
                         <a href="#contact">Contact us</a>
                     </div>
                     <div class="right">
-                        <a href="UserDonation"><button class="btn btn-primary">Donation</button></a></a>
+                        <a href="{% url 'account:UserDonation' user_id=user.id %}"><button class="btn btn-primary">Donation</button></a></a>
                     </div>
                     <div class="right">
-                        <a href="NgoRequirement"><button class="btn btn-primary">Upload Requirements</button> </a>
+                        <a href="{% url 'account:NgoRequirement' user_id=user.id %}"><button class="btn btn-primary">Upload Requirements</button> </a>
                     </div>
                     <div class="right">
-                        <a href="index"><button class="btn btn-primary">Logout</button> </a>
+                        <a href="{% url 'account:index' %}"><button class="btn btn-primary">Logout</button> </a>
                     </div>
                 </nav>
             </header>
